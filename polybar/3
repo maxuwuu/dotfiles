@@ -1,0 +1,409 @@
+#!/bin/sh
+ 
+;=============================================================
+ 
+ 
+[colors]
+;background = ${xrdb:color0:#222}
+;transparency prefix: 90% - E6, 85% - D9, 80% - CC, 75% - BF
+; 70% - B3, 65% - A6, 60% - 99, 50% - 80, 40% - 66, 33% 54
+; 25% - 40, 20% - 33, 10% - 1A, 5% - 0D, 0% - 00
+;background = #282a36
+background = #D92a2a2a
+;(original)background = #9900222b
+background-alt = #6272a4
+;foreground = ${xrdb:color7:#222}
+;foreground = #f8f8f2
+foreground = #dadada
+foreground-alt = #ff92d0
+primary = #00cccc
+secondary = #e60053
+alert = #bd2c40
+ 
+ 
+ 
+#############################################################
+###			SPECTRWM                          ###
+#############################################################
+ 
+[bar/mainbar-spectrwm]
+;monitor = ${env:MONITOR:eDP-1}
+width = 100%
+height = 28
+offset-x = 0%
+offset-y = 0%
+radius = 0.0
+fixed-center = true
+ 
+;background = #00282a36
+background = #002a2a2a
+background-alt = #6272a4
+;foreground = #f8f8f2
+foreground = #dadada
+foreground-alt = #ff92d0
+ 
+line-size = 2
+line-color = #00000000
+ 
+border-size = 0
+border-color = #00000000
+ 
+padding = 2
+module-margin-left = 0
+module-margin-right = 0
+ 
+;font-1 = Roboto:size=12:antialias=true;1
+font-0 = "NotoSans Nerd Font:style=Medium:size=11;3"
+;font-2 = unifont:fontformat=truetype:size=10:antialias=false;4
+;font-3 = Font Awesome 5 Free Regular:style=Regular:size=10;3
+;font-4 = Font Awesome 5 Free Solid:style=Solid:size=10;3
+;font-5 = Font Awesome 5 Brands Regular:style=Solid:size=10;3
+ 
+modules-left = xworkspaces 
+modules-center = 
+modules-right = network temperature xbacklight pulseaudio battery date powermenu
+ 
+ 
+tray-position = center
+tray-padding = 5
+tray-offset-x = 270
+tray-background = #2a2a2a
+ 
+override-redirect = true
+ 
+cursor-click = left_ptr
+cursor-scroll = left_ptr
+ 
+###################################################################
+###		        BSPWM					###
+###################################################################
+ 
+[bar/mainbar-bspwm]
+;monitor = ${env:MONITOR:eDP-1}
+enable-ipc = true
+width = 100%
+height = 28
+offset-x = 0%
+offset-y = 0%
+radius = 0.0
+fixed-center = true
+ 
+background = #282a36
+;(original)background = #9900222b
+background-alt = #6272a4
+;foreground = ${xrdb:color7:#222}
+foreground = #f8f8f2
+foreground-alt = #ff92d0
+ 
+line-size = 2
+line-color = #000000
+ 
+border-size = 0
+border-color = #00000000
+ 
+padding = 2
+module-margin-left = 0
+module-margin-right = 0
+ 
+font-1 = Roboto:size=11:weight=medium;1
+font-0 = Noto Sans:style=medium:size=11;1
+font-2 = unifont:fontformat=truetype:size=10:antialias=false;1
+font-3 = Font Awesome 5 Free Regular:style=Regular:size=10;0
+font-4 = Font Awesome 5 Free Solid:style=Solid:size=10;0
+font-5 = Font Awesome 5 Brands Regular:style=Solid:size=10;0
+font-6 = Roboto Mono:size=11:weight=medium;1
+ 
+modules-left = bspwm
+modules-center =
+modules-right = network temperature xbacklight pulseaudio battery date powermenu
+ 
+tray-position = center
+tray-padding = 5
+tray-offset-x = 200
+tray-background = transparent
+ 
+wm-restack = bspwm
+ 
+cursor-click = left_ptr
+cursor-scroll = left_ptr
+ 
+###################################################################
+###			MODULES				        ###
+###################################################################
+ 
+ 
+[module/bspwm]
+type = internal/bspwm
+ 
+label-focused = %index%
+label-focused-background = #6272a4
+label-focused-foreground = #f8f8f2
+;label-focused-underline= #bd93f9
+label-focused-padding = 4
+ 
+label-dimmed = %index%
+label-dimmed-foreground = #6272a4
+label-dimmed-background = #44475a
+label-dimmed-padding = 4
+ 
+label-occupied = %index%
+label-occupied-padding = 4
+label-occupied-background = #44475a
+label-occupied-foreground = #f8f8f2
+ 
+label-urgent = %index%!
+label-urgent-background = "#212121"
+label-urgent-foreground = "#ff5555"
+label-urgent-underline = "#ff5555"
+label-urgent-padding = 4
+ 
+label-empty = %index%
+label-empty-foreground = #6272a4
+label-empty-background = #44475a
+label-empty-padding = 4
+ 
+format = <label-state> <label-mode>
+label-monocle =" [o]"
+label-floating =" ~>"
+label-pseudotiled =" |~|"
+ 
+ 
+[module/network]
+type = internal/network
+interface = wlp4s0
+format-connected = <label-connected>
+label-connected ="  %essid%"
+format-disconnected =<label-disconnected>
+label-disconnected =  "No Wifi"
+label-disconnected-foreground = #ff5555
+label-disconnected-background = #2a2a2a
+label-connected-foreground = #dadada
+label-connected-background = #2a2a2a
+label-connected-padding = 2
+label-disconnected-padding-left = 4
+label-connected-padding-left = 4
+ 
+ 
+[module/xbacklight]
+type = internal/xbacklight
+ 
+format =<label><bar>
+label =   %percentage%% 
+label-foreground = #dadada
+label-background = #2a2a2a
+label-padding = 2
+ 
+bar-width = 10
+bar-indicator = 
+bar-indicator-foreground = #dadada
+bar-indicator-background = #373737
+bar-indicator-padding = 4
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #F1FA8C
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+ 
+ 
+[module/date]
+type = internal/date
+interval = 5
+ 
+date ="- %a  %b %e "
+;date-alt = " %Y-%m-%d"
+ 
+time = "%l:%M %p -"
+;time-alt = %H:%M:%S
+ 
+;format-prefix = 
+;format-prefix-foreground = ${colors.foreground-alt}
+;format-underline = 
+ 
+label = %date% %time%
+label-padding = 2
+label-foreground = #f8f8f2
+label-background = #2a2a2a
+label-margin = 0 
+label-border = 2
+;label-border-color = #6272a4
+ 
+[module/pulseaudio]
+type = internal/pulseaudio
+ 
+format-volume = <label-volume><bar-volume>
+label-volume =  %percentage%%
+label-volume-foreground = #dadada
+label-volume-background = #2a2a2a
+label-volume-padding = 2
+ 
+label-muted =  muted
+label-muted-foreground = #ff5555
+label-muted-background = #2a2a2a
+label-muted-padding = 2
+ 
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+ 
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 100
+ 
+format-charging = <ramp-capacity><label-charging>
+;format-charging-underline = #ffb52a
+ 
+format-discharging = <ramp-capacity><label-discharging>
+;format-discharging-underline = ${self.format-charging-underline}
+ 
+;format-full-prefix =<ramp-capacity><label-charging>  
+;format-full-prefix-foreground = #f8f8f2
+;format-full-prefix-background = #44475a
+;format-full-prefix-padding-right = 2
+;format-full-underline = ${self.format-charging-underline}
+ 
+label-charging = %percentage%%
+label-charging-foreground = #dadada
+label-charging-background = #2a2a2a
+label-charging-padding-right = 2
+ 
+label-discharging = %percentage%%
+label-discharging-foreground = #dadada
+label-discharging-background = #2a2a2a
+label-discharging-padding-right = 2
+ 
+format-full =<ramp-capacity><label-full>
+ 
+label-full = %percentage%%
+label-full-foreground = #dadada
+label-full-background = #2a2a2a
+label-full-padding-right = 2
+ 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = #dadada
+ramp-capacity-0-foreground = #ff5555
+ramp-capacity-background = #2a2a2a
+ramp-capacity-0-background = #2a2a2a
+ramp-capacity-padding = 2
+ramp-capacity-0-padding = 2
+ 
+;animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
+;animation-charging-foreground = ${colors.foreground-alt}
+;animation-charging-framerate = 750
+ 
+;label-discharging = %percentage%%
+;animation-discharging-0 = 
+;animation-discharging-1 = 
+;animation-dischargin-2 = 
+;animation-discharging-foreground = ${colors.foreground-alt}
+;animation-discharging-framerate = 750
+ 
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+;warn-temperature = 65
+ 
+format = <label>
+;format-underline = 
+;format-warn = <label-warn>
+;format-warn-underline = ${self.format-underline}
+ 
+label =" %temperature-c%" 
+;label-warn =" %temperature-c% "
+;label-warn-foreground = #e25822
+label-foreground = #dadada
+label-background = #2a2a2a
+label-padding = 2
+ 
+ 
+;ramp-0 = 
+;ramp-1 = 
+;ramp-2 = 
+;ramp-foreground = ${colors.foreground}
+ 
+[module/powermenu]
+type = custom/menu
+ 
+expand-right = true
+ 
+format-spacing = 1
+ 
+label-open =  
+label-open-foreground = #dadada
+label-open-background = #2a2a2a
+label-open-radius = 30
+label-open-padding = 2
+label-close = "Cancel"
+label-close-foreground = #dadada
+label-close-background = #b90e0a
+label-close-padding = 2
+ 
+menu-0-0 = "Log Out"
+menu-0-0-exec = pkill $DESKTOP_SESSION
+menu-0-0-background = #4d4d4d
+menu-0-0-foreground = #dadada
+menu-0-0-padding = 2
+ 
+ 
+menu-0-1 = "Reboot"
+menu-0-1-exec = reboot
+menu-0-1-background = #4d4d4d
+menu-0-1-foreground = #dadada
+menu-0-1-padding = 2
+ 
+ 
+menu-0-2 = "Power Off"
+menu-0-2-exec = shutdown -h now
+menu-0-2-background = #4d4d4d
+menu-0-2-foreground = #dadada
+menu-0-2-padding = 2
+ 
+[module/xworkspaces]
+type = internal/xworkspaces
+pin-workspaces = true
+enable-click = true
+ 
+format = <label-state> 
+ 
+label-active = %index%
+label-active-foreground = #dadada
+label-active-background = #4d4d4d
+label-active-underline = #017aff
+label-active-padding = 3
+ 
+label-occupied = %index%
+label-occupied-foreground = #dedede
+label-occupied-padding = 3
+ 
+label-empty = %index%
+label-empty-foreground = #7d7d7d
+label-empty-padding = 3
+ 
+ 
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+ 
+ 
