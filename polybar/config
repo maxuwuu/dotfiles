@@ -69,21 +69,18 @@ type = custom/menu
 
 expand-right = true
 
-menu-0-0 = %{T1}Firefox%{T-}
+menu-0-0 = Firefox
 menu-0-0-exec = firefox
 menu-0-1 = Terminal
 menu-0-1-exec = alacritty
 menu-0-2 = File Manager
 menu-0-2-exec = thunar
 menu-0-3 = Spotify
-menu-0-3-exec = flatpak run com.spotify.Cilent
+menu-0-3-exec = flatpak run com.spotify.Client
 menu-0-4 = Search
 menu-0-4-exec = rofi -show drun
 
-label-open = "  Apps"
-label-close = "  X"
-
-label-separator = "   |   "
+label-separator = " | "
 
 [module/xwindow]
 type = internal/xwindow
