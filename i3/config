@@ -115,3 +115,12 @@ exec_always --no-startup-id picom
 exec --no-startup-id feh --bg-scale
 exec --no-startup-id polybar main
 exec_always --no-startup-id xrandr --output Virtual1 --mode 1920x1080
+
+# class                 border     backgr.    text       indicator  child_border
+client.focused          #6272a4    #282a36    #f8f8f2    #bd93f9    #6272a4
+client.focused_inactive #44475a    #282a36    #f8f8f2    #44475a    #44475a
+client.unfocused        #44475a    #282a36    #6272a4    #44475a    #282a36
+client.urgent           #ff5555    #282a36    #f8f8f2    #ff5555    #ff5555
+client.placeholder      #000000    #282a36    #f8f8f2    #000000    #282a36
+
+client.background       #282a36
