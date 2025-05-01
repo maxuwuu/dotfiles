@@ -5,7 +5,9 @@ My setup information
 * Terminal: [konsole](https://alacritty.org)
 * WM: [hyprland](https://hyprland.org)
 * Shell: [bash](https://www.gnu.org/software/bash/)
+* Wallpeper:
 [swaybg](https://github.com/swaywm/swaybg/)
-[waybar](
+* Bar:
+[waybar](/)
 ![]()
 ![]()
