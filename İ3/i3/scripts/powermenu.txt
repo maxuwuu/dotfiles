@@ -1,0 +1,28 @@
+﻿#!/bin/bash
+
+options=(
+    "Shutdown"
+    "Reboot"
+    "Switch"
+    "Logout"
+)
+
+chosen=$(printf "%s\n" "${options[@]}" | rofi -dmenu -i -p "")
+
+case "$chosen" in
+    Shutdown) systemctl poweroff ;;
+    Reboot) systemctl reboot ;;
+    Switch) dm-tool switch-to-greeter ;;
+    Logout)
+        if pgrep -x i3 >/dev/null; then
+            i3-msg exit
+        elif pgrep -x bspwm >/dev/null; then
+            bspc quit
+        elif pgrep -x openbox >/dev/null; then
+            openbox --exit
+        else
+            pkill -KILL -u "$USER"
+        fi
+        ;;
+    *) exit 0 ;;
+esac
