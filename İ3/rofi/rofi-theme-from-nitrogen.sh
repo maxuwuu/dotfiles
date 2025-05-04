@@ -12,8 +12,6 @@ BACKGROUND=$(sed -n '1p' ~/.cache/wal/colors)
 FOREGROUND=$(sed -n '8p' ~/.cache/wal/colors)
 ACCENT=$(sed -n '2p' ~/.cache/wal/colors)
 
-ROFI_CONFIG="$HOME/.config/rofi/colors-wall.rasi"
-
 cat > "$ROFI_CONFIG" <<EOF
 * {
     background-color: $BACKGROUND;
